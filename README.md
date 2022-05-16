@@ -1,11 +1,10 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+![imagem](https://user-images.githubusercontent.com/78623134/168576504-aa3c0d58-0d2e-4801-9282-ef40783116a1.png)
+![imagem](https://user-images.githubusercontent.com/78623134/168576613-2078bc22-aa1e-4bf3-9242-80eedb20cfac.png)
+![imagem](https://user-images.githubusercontent.com/78623134/168576734-efde8402-934a-4f45-8c85-65f71a7a07c8.png)
+![imagem](https://user-images.githubusercontent.com/78623134/168576779-24670bbf-57fe-4d7c-a89e-b3cef7902dda.png)
+![imagem](https://user-images.githubusercontent.com/78623134/168576902-612afc19-6314-4108-a312-ee3afaf8ee27.png)
+![imagem](https://user-images.githubusercontent.com/78623134/168577096-7f5330d1-ac2f-4b0d-932b-9a3a716f786d.png)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
 
 ## About Laravel
 
