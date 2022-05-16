@@ -38,16 +38,19 @@
             </td>
             <td>
                 <a href="/players/{{$player -> id}}"> <button type="button" class="btn btn-success">Show</button></a>
-            </td><td>
-                <a href="/players/{{$player -> id}}/edit"> <button type="button" class="btn btn-primary">Edit</button></a>
             </td>
-            <td>
-                <form action="{{url('players/' . $player->id)}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            </td>
+            @auth
+                <td>
+                    <a href="/players/{{$player -> id}}/edit"> <button type="button" class="btn btn-primary">Edit</button></a>
+                </td>
+                <td>
+                    <form action="{{url('players/' . $player->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            @endauth
         </tr>
         @endforeach
     </tbody>

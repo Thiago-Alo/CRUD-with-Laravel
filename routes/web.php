@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,33 +13,46 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+Route::get('', function(){return redirect('players');});
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::prefix('players')->group(function () {
+// Players
+Route::get('', 'PlayerController@index');
+Route::get('search', 'PlayerController@search')->name('search');
+
+// Auth
+Route::group(['middleware' => 'auth'], function(){
+
+
+    Route::get('create', 'PlayerController@create');
+    Route::post('', 'PlayerController@store');
+    Route::get('{player}/edit', 'PlayerController@edit');
+    Route::put('{player}', 'PlayerController@update');
+    Route::delete('{player}', 'PlayerController@destroy');
+
+});
+
+Route::get('{player}', 'PlayerController@show');
 });
 
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-// Players
-Route::get('/players', 'PlayerController@index');
-Route::get('/players/search', 'PlayerController@search')->name('search');
-Route::get('/players/create', 'PlayerController@create');
-Route::post('/players', 'PlayerController@store');
-Route::get('/players/{player}', 'PlayerController@show');
-Route::get('/players/{player}/edit', 'PlayerController@edit');
-Route::put('/players/{player}', 'PlayerController@update');
-Route::delete('/players/{player}', 'PlayerController@destroy');
-
+Route::prefix('pets')->group(function () {
 // Pets
-Route::get('/pets', 'PetController@index');
-Route::get('/pets/create', 'PetController@create');
-Route::post('/pets', 'PetController@store');
-Route::get('/pets/{pet}', 'PetController@show');
-Route::get('/pets/{pet}/edit', 'PetController@edit');
-Route::put('/pets/{pet}', 'PetController@update');
-Route::delete('/pets/{pet}', 'PetController@destroy');
+Route::get('', 'PetController@index');
 
-Auth::routes();
+// Auth
+Route::group(['middleware' => 'auth'], function(){
 
-Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('create', 'PetController@create');
+    Route::post('', 'PetController@store');
+    Route::get('{pet}/edit', 'PetController@edit');
+    Route::put('{pet}', 'PetController@update');
+    Route::delete('{pet}', 'PetController@destroy');
+
+});
+
+Route::get('{pet}', 'PetController@show');
+});
