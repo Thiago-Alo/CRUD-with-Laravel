@@ -13,8 +13,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 Auth::routes();
 Route::get('', function(){return redirect('players');});
+
+
 
 
 Route::prefix('players')->group(function () {
@@ -22,11 +26,13 @@ Route::prefix('players')->group(function () {
 Route::get('', 'PlayerController@index');
 Route::get('search', 'PlayerController@search')->name('search');
 
+
+
 // Auth
 Route::group(['middleware' => 'auth'], function(){
-
-
     Route::get('create', 'PlayerController@create');
+
+
     Route::post('', 'PlayerController@store');
     Route::get('{player}/edit', 'PlayerController@edit');
     Route::put('{player}', 'PlayerController@update');
@@ -37,7 +43,10 @@ Route::group(['middleware' => 'auth'], function(){
 Route::get('{player}', 'PlayerController@show');
 });
 
-
+Route::group(['middleware' => 'admin'], function(){
+    Route::get('create', 'PlayerController@create');
+    Route::get('create', 'PetController@create');
+});
 
 Route::prefix('pets')->group(function () {
 // Pets
@@ -46,7 +55,7 @@ Route::get('', 'PetController@index');
 // Auth
 Route::group(['middleware' => 'auth'], function(){
 
-    Route::get('create', 'PetController@create');
+
     Route::post('', 'PetController@store');
     Route::get('{pet}/edit', 'PetController@edit');
     Route::put('{pet}', 'PetController@update');

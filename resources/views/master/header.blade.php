@@ -12,9 +12,9 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item @if(Request::is('players')) active @endif " href="/players">Players List</a>
-                    @auth
+                    @if(Auth::check() && Auth::user()->isAdmin())
                         <a class="dropdown-item @if(Request::is('players/create')) active @endif " href="/players/create">Add Player</a>
-                    @endauth
+                    @endif
                 </div>
             </div>
             <div class="dropdown ml-2"> <!-- PETS -->
@@ -23,9 +23,9 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item @if(Request::is('pets')) active @endif " href="/pets">Pets List</a>
-                    @auth
+                    @if(Auth::check() && Auth::user()->isAdmin())
                         <a class="dropdown-item @if(Request::is('pets/create')) active @endif " href="/pets/create">Add Pet</a>
-                    @endauth
+                    @endif
                 </div>
             </div>
 
