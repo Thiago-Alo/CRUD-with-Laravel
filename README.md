@@ -1,3 +1,7 @@
+Login: admin@admin.com
+password: admin
+
+![imagem](https://user-images.githubusercontent.com/78623134/168915877-0baf0196-b5d7-4c8c-ba4c-b6a6a55a8c10.png)
 ![imagem](https://user-images.githubusercontent.com/78623134/168576504-aa3c0d58-0d2e-4801-9282-ef40783116a1.png)
 ![imagem](https://user-images.githubusercontent.com/78623134/168576613-2078bc22-aa1e-4bf3-9242-80eedb20cfac.png)
 ![imagem](https://user-images.githubusercontent.com/78623134/168576734-efde8402-934a-4f45-8c85-65f71a7a07c8.png)
@@ -5,73 +9,38 @@
 ![imagem](https://user-images.githubusercontent.com/78623134/168576902-612afc19-6314-4108-a312-ee3afaf8ee27.png)
 ![imagem](https://user-images.githubusercontent.com/78623134/168577096-7f5330d1-ac2f-4b0d-932b-9a3a716f786d.png)
 
+CMD{
+    1- composer global require laravel/installer 
+    2- criar a pata com o projecto.... "blog" 
+}
+3- composer require laravel/ui:^2.4
+4- php artisan ui vue --auth
+5.1. npm install 
+5.2. PASTA RESOURCES/SASS/APP.CSS
+    // Bootstrap Icons
+@import '~bootstrap-icons/font/bootstrap-icons.css';
+5.3. npm i bootstrap-icons
+5.4. npm run dev
 
-## About Laravel
+6- http://localhost/phpmyadmin/index.php <---create db
+6.1. ENV. 
+DB_DATABASE=cesae
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+7- php artisan make:model Category -a
+php artisan make:seeder UsersTableSeeder
+php artisan make:factory PostFactory
+php artisan make:model Post
+php artisan make:controller HelloWorldController --resource
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+8- php artisan migrate:fresh --seed
+php artisan migrate
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+9- php artisan serve
 
-## Learning Laravel
+OBS:
+composer dump-autoload
+php artisan optimize:clear
+--------------
+CONTROL + C ... stop server
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+https://github.com/fzaninotto/Faker
