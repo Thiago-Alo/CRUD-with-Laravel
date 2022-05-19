@@ -1,9 +1,34 @@
 
     <br><br>
-    <form method="POST" class="container" action="{{ url('players') }}">
+    <form method="POST" class="container" action="{{ url('players') }}" enctype="multipart/form-data">
     @csrf
 
     <h1>Add Player</h1>
+
+    <div class="form-group">
+        <label for="image">Image</label>
+        <input
+            type="file"
+            id="image"
+            name="image"
+            placeholder="Choose image"
+            class="form-control
+            @error('image') is-invalid @enderror"
+            value="{{ old('image') }}"
+            aria-describedby="nameHelp">
+
+        <small id="nameHelp" class="form-text text-muted">We'll never share your data with anyone else.</small>
+
+
+
+        @error('name')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+
+
     <div class="form-group">
         <label for="name">Name</label>
         <input
@@ -64,7 +89,7 @@
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>
-        @enderror 
+        @enderror
 
     </div>
     <label>Retired?</label>

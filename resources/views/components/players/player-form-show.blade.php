@@ -1,6 +1,6 @@
 
     <br><br>
-    
+
     <div class="container">
     <h1>Player {{$player -> id}} Info</h1>
     <div class="form-group">
@@ -11,6 +11,14 @@
             class="form-control"
             disabled>
 
+    </div>
+    <div class="form-group">
+        <label for="image">Image</label>
+        @if($player->image)
+            <img class="w-25"src="{{asset('storage/'. $player->image)}}" alt="">
+        @else
+            <p>NO IMAGE</p>
+        @endif
     </div>
     <div class="form-group">
         <label for="address">Address</label>
@@ -56,6 +64,6 @@
 
     <br><br>
     <a href="/players"><button type="submit" class="mt-2 mb-5 btn btn-primary">Back</button></a>
-   
+
 </div>
 

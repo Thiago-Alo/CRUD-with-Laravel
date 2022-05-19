@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Player;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PlayerController extends Controller
 {
@@ -57,20 +58,46 @@ class PlayerController extends Controller
             'address'       => 'required',
             'description'   => 'required',
             'retired'       => 'required',
+            'image'         => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        Player::create([
+        /*Player::create([
             'name'          => $request->name,
             'address'       => $request->address,
             'description'   => $request->description,
             'retired'       => $request->retired,
-        ]);
+
+        ]);*/
+
+        $player = new Player();
+        $player->name           = $request->name;
+        $player->address        = $request->address;
+        $player->description    = $request->description;
+        $player->retired        = $request->retired;
+        $player->save();
+
+        //If we have an image file, we store it, and move it in the database
+        if ($request->file('image')) {
+
+            // Get Image File
+            $imagePath = $request->file('image');
+
+            // Define Image Name
+            $imageName =  $player->id . '_' .  time() . '_' .  $imagePath->getClientOriginalName();
+
+            // Save Image on Storage
+            $path = $request->file('image')->storeAs('images/players/' . $player->id, $imageName, 'public');
+
+            //Save Image Path
+            $player->image = $path;
+            $player->save();
+        }
 
         return redirect('players')->with('status','Item created successfully');
 
     }
 
-    /** 
+    /**
      * Display the specified resource.
      *
      * @param  \App\Player  $player
@@ -89,6 +116,8 @@ class PlayerController extends Controller
      */
     public function edit(Player $player)
     {
+
+
         return view ('pages.players.edit', ['player' => $player]);
     }
 
@@ -108,6 +137,41 @@ class PlayerController extends Controller
         $player->retired        = $request->retired;
         $player->save();
 
+        if($player->image == null){
+            if ($request->file('image')) {
+
+                // Get Image File
+                $imagePath = $request->file('image');
+
+                // Define Image Name
+                $imageName =  $player->id . '_' .  time() . '_' .  $imagePath->getClientOriginalName();
+
+                // Save Image on Storage
+                $path = $request->file('image')->storeAs('images/players/' . $player->id, $imageName, 'public');
+
+                //Save Image Path
+                $player->image = $path;
+                $player->save();
+            }
+        }else{
+            if ($request->file('image')) {
+
+                Storage::deleteDirectory('public/images/players/' . $player->id);
+                // Get Image File
+                $imagePath = $request->file('image');
+
+                // Define Image Name
+                $imageName =  $player->id . '_' .  time() . '_' .  $imagePath->getClientOriginalName();
+
+                // Save Image on Storage
+                $path = $request->file('image')->storeAs('images/players/' . $player->id, $imageName, 'public');
+
+                //Save Image Path
+                $player->image = $path;
+                $player->save();
+            }
+        }
+
         return redirect('players')->with('status','Item edited successfully');
 
     }
@@ -121,6 +185,9 @@ class PlayerController extends Controller
     public function destroy(Player $player)
     {
         $player = Player::find($player->id);
+
+        Storage::deleteDirectory('public/images/players/' . $player->id);
+        //Storage::delete('public/' . $player->image);
         $player->delete();
 
         return redirect('players')->with('status','Item deleted successfully');

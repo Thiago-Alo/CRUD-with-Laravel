@@ -16,6 +16,7 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
+            <th scope="col">Image</th>
             <th scope="col">Address</th>
             <th scope="col">Retired</th>
             <th scope="col">Actions</th>
@@ -27,7 +28,18 @@
         <tr>
             <th scope="row">{{$player -> id}}</th>
             <td>{{$player -> name}}</td>
-            <td>{{$player -> address}}</td>
+            <td>
+                @if($player->image)
+                    <img class="w-50"src="{{asset('storage/'. $player->image)}}" alt="">
+                @else
+                    <p>NO IMAGE</p>
+                @endif
+
+            </td>
+            
+            <td>
+                {{$player -> address}}
+            </td>
 
             <td>
                 @if($player -> retired == 1)

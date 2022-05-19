@@ -14,7 +14,10 @@ class Player extends Model
         'address',
         'description',
         'retired',
+        'image',
     ];
+
+    
 
     public function pets()
     {

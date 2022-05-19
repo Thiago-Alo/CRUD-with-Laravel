@@ -1,6 +1,6 @@
 <br><br>
 
-    <form class="container" method="POST" action="{{ url('players/' . $player->id) }}">
+    <form class="container" method="POST" action="{{ url('players/' . $player->id) }}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 
@@ -22,8 +22,26 @@
             <strong>{{ $message }}</strong>
         </span>
         @enderror
-
     </div>
+
+
+    <div class="form-group">
+        <label for="image">Image</label>
+        @if($player->image)
+        <input
+            type="file"
+            id="image"
+            name="image"
+            class="form-control @error('image') is-invalid @enderror"
+            value="{{ old($player->image) }}"
+            aria-describedby="nameHelp">
+
+            <img class="w-25"src="{{asset('storage/'. $player->image)}}" alt="">
+            @else
+                <p>NO IMAGE</p>
+            @endif
+    </div>
+
 
     <div class="form-group">
         <label for="address">Address</label>
@@ -61,7 +79,7 @@
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>
-        @enderror 
+        @enderror
 
     </div>
 
@@ -91,6 +109,6 @@
 
     <br><br>
     <button type="submit" class="mt-2 mb-5 btn btn-primary">Edit</button>
-   
+
     </form>
 
