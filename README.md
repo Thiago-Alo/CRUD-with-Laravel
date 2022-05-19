@@ -38,6 +38,9 @@ php artisan migrate
 
 9- php artisan serve
 
+
+php artisan storage:link  <- archievs upload
+
 OBS:
 composer dump-autoload
 php artisan optimize:clear
