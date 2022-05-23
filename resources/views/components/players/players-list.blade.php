@@ -36,7 +36,7 @@
                 @endif
 
             </td>
-            
+
             <td>
                 {{$player -> address}}
             </td>
@@ -61,6 +61,9 @@
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
+
+                
+
                 </td>
             @endauth
         </tr>

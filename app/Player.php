@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Exports\PlayersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Player extends Model
 {
@@ -17,7 +19,6 @@ class Player extends Model
         'image',
     ];
 
-    
 
     public function pets()
     {

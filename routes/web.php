@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PlayerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,11 @@ Route::prefix('players')->group(function () {
 // Players
 Route::get('', 'PlayerController@index');
 Route::get('search', 'PlayerController@search')->name('search');
+Route::get('players/export/', [PlayerController::class, 'export']);
+Route::get('players/export/', 'PlayerController@export')->name('excel');
+Route::get('file-import-export', [PlayerController::class, 'fileImportExport'])->name('file-import-export');
+Route::post('file-import', [PlayerController::class, 'fileImport'])->name('file-import');
+
 
 
 
@@ -38,6 +44,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::put('{player}', 'PlayerController@update');
     Route::delete('{player}', 'PlayerController@destroy');
 
+
+
 });
 
 Route::get('{player}', 'PlayerController@show');
@@ -46,6 +54,8 @@ Route::get('{player}', 'PlayerController@show');
 Route::group(['middleware' => 'admin'], function(){
     Route::get('create', 'PlayerController@create');
     Route::get('create', 'PetController@create');
+
+
 });
 
 Route::prefix('pets')->group(function () {

@@ -54,7 +54,22 @@
                     </form>
                     </div>
                 </li>
+                <li>
+                    <a href="{{route('excel')}}"> <button type="button" class="btn btn-success">Export</button></a>
+
+                </li>
+
+                <form action="{{ route('file-import') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" name="file" id="customFile">
+                    <button class="btn btn-primary ml-5">Import data</button>
+
+
+                </form>
+
             @endguest
+
+
 
         </ul>
         <form class="form-inline my-2 my-lg-0" action="{{ route('search') }}" method="GET">

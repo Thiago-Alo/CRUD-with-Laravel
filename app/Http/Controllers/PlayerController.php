@@ -5,9 +5,28 @@ namespace App\Http\Controllers;
 use App\Player;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+//use App\Models\Player;
+use App\Exports\PlayersExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\PlayersImport;
 
 class PlayerController extends Controller
 {
+
+    public function export()
+    {
+        return Excel::download(new PlayersExport, 'imports.xlsx');
+    }
+
+    public function fileImportExport()
+    {
+       return view('file-import');
+    }
+    public function fileImport(Request $request)
+    {
+        Excel::import(new PlayersImport, $request->file('file')->store('temp'));
+        return back();
+    }
     /**
      * Display a listing of the resource.
      *
